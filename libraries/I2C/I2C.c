@@ -197,7 +197,6 @@ void I2C_pullup(uint8_t activate)
 }
 #endif
 
-#if 0
 void I2C_scan()
 {
 	uint16_t tempTime = timeOutDelay;
@@ -231,14 +230,11 @@ void I2C_scan()
 	}
 	timeOutDelay = tempTime;
 }
-#endif
 
-#if 0
 uint8_t I2C_available()
 {
 	return (bytesAvailable);
 }
-#endif
 
 uint8_t I2C_receive()
 {
@@ -253,69 +249,26 @@ uint8_t I2C_receive()
 
 /* --- write functions --------------------------------------------------- */
 
-#if 0
 uint8_t I2C_write(uint8_t address, uint8_t registerAddress)
 {
 	return (I2C_write_sn(address, registerAddress, NULL, 0));
 }
-#endif
 
-uint8_t I2C_write2(uint8_t address, uint16_t registerAddress)
-{
-	return (I2C_write2_sn(address, registerAddress, NULL, 0));
-}
-
-#if 0
 uint8_t I2C_write_reg(uint8_t address, uint8_t registerAddress, uint8_t data)
 {
 	return (I2C_write_sn(address, registerAddress, &data, 1));
 }
-#endif
 
-uint8_t I2C_write2_reg(uint8_t address, uint16_t registerAddress, uint8_t data)
-{
-	return (I2C_write2_sn(address, registerAddress, &data, 1));
-}
-
-#if 0
 uint8_t I2C_write_s(uint8_t address, uint8_t registerAddress, char *data)
 {
 	return (I2C_write_sn(address, registerAddress, data, strlen(data)));
 }
-#endif
 
-#if 0
-uint8_t I2C_write2_s(uint8_t address, uint16_t registerAddress, char *data)
-{
-	return (I2C_write_sn(address, registerAddress, data, strlen(data)));
-}
-#endif
-
-#if 0
 uint8_t I2C_write_sn(uint8_t address, uint8_t registerAddress, uint8_t * data,
 		     uint8_t numberBytes)
 {
 	SEND_ADDRESS_W(address);
 	SEND_BYTE(registerAddress);
-// only this part differs for the variants of I2C_write()
-	while (numberBytes--) {
-		SEND_BYTE(*data++);
-	}
-//
-	returnStatus = stop();
-	if (returnStatus == 1) {
-		return (7);
-	}
-	return (returnStatus);
-}
-#endif
-
-uint8_t I2C_write2_sn(uint8_t address, uint16_t registerAddress, uint8_t * data,
-		     uint8_t numberBytes)
-{
-	SEND_ADDRESS_W(address);
-	SEND_BYTE((registerAddress >> 8) & 0xFF); // reg high byte
-	SEND_BYTE( registerAddress       & 0xFF); // reg low byte
 // only this part differs for the variants of I2C_write()
 	while (numberBytes--) {
 		SEND_BYTE(*data++);
@@ -347,7 +300,6 @@ uint8_t I2C_read(uint8_t address, uint8_t numberBytes)
  *
  * This implements a single-byte write transfer followed by a multi-byte read.
  */
-#if 0
 uint8_t I2C_read_reg(uint8_t address, uint8_t registerAddress,
 		     uint8_t numberBytes)
 {
@@ -356,19 +308,6 @@ uint8_t I2C_read_reg(uint8_t address, uint8_t registerAddress,
 // now the regular read part with a repeated start
 	return (I2C_readbuf(address, numberBytes, data));
 }
-#endif
-
-#if 0
-uint8_t I2C_read2_reg(uint8_t address, uint16_t registerAddress,
-		     uint8_t numberBytes)
-{
-	SEND_ADDRESS_W(address);
-	SEND_BYTE((registerAddress >> 8) & 0xFF); // reg high byte
-	SEND_BYTE( registerAddress       & 0xFF); // reg low byte
-// now the regular read part with a repeated start
-	return (I2C_readbuf(address, numberBytes, data));
-}
-#endif
 
 /** read multiple bytes from I2C bus into external buffer
  *
@@ -469,7 +408,6 @@ uint8_t I2C_readbuf(uint8_t address, uint8_t numberBytes, uint8_t * dataBuffer)
  *
  * This implements a single-byte write transfer followed by a multi-byte read.
  */
-#if 0
 uint8_t I2C_readbuf_reg(uint8_t address, uint8_t registerAddress,
 			uint8_t numberBytes, uint8_t * dataBuffer)
 {
@@ -478,24 +416,6 @@ uint8_t I2C_readbuf_reg(uint8_t address, uint8_t registerAddress,
 	// now a regular read (with a repeated start)
 	return (I2C_readbuf(address, numberBytes, dataBuffer));
 }
-#endif
-
-#if 0
-uint8_t I2C_read2buf_reg(uint8_t address, uint16_t registerAddress,
-			uint8_t numberBytes, uint8_t * dataBuffer)
-{
-	SEND_ADDRESS_W(address);
-	SEND_BYTE((registerAddress >> 8) & 0xFF); // reg high byte
-	SEND_BYTE( registerAddress       & 0xFF); // reg low byte
-	// now a regular read (with a repeated start)
-	return (I2C_readbuf(address, numberBytes, dataBuffer));
-}
-#endif
-
-// uint8_t I2C_sendAddress(uint8_t address) 
-// {
-	// SEND_ADDRESS_W(address);
-// }
 
 /////////////// Private Methods ////////////////////////////////////////
 

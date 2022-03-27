@@ -110,24 +110,15 @@ void I2C_scan();
 uint8_t I2C_available();
 uint8_t I2C_receive();
 uint8_t I2C_write(uint8_t, uint8_t);
-uint8_t I2C_write2(uint8_t, uint16_t);
 uint8_t I2C_write_reg(uint8_t, uint8_t, uint8_t);
-uint8_t I2C_write2_reg(uint8_t, uint16_t, uint8_t);
 uint8_t I2C_write_s(uint8_t, uint8_t, char *);
-uint8_t I2C_write2_s(uint8_t, uint16_t, char *);
 uint8_t I2C_write_sn(uint8_t, uint8_t, uint8_t *, uint8_t);
-uint8_t I2C_write2_sn(uint8_t, uint16_t, uint8_t *, uint8_t);
 uint8_t I2C_read(uint8_t address, uint8_t numberBytes);
 uint8_t I2C_read_reg(uint8_t address, uint8_t registerAddress,
 		     uint8_t numberBytes);
-// uint8_t I2C_read2_reg(uint8_t address, uint16_t registerAddress,
-		     // uint8_t numberBytes);
 uint8_t I2C_readbuf(uint8_t address, uint8_t numberBytes, uint8_t * dataBuffer);
 uint8_t I2C_readbuf_reg(uint8_t address, uint8_t registerAddress,
 			uint8_t numberBytes, uint8_t * dataBuffer);
-// uint8_t I2C_read2buf_reg(uint8_t address, uint16_t registerAddress,
-			// uint8_t numberBytes, uint8_t * dataBuffer);
-// uint8_t I2C_sendAddress(uint8_t address);
 
 // not sure if these really need to be public:
 //    extern uint8_t returnStatus;
