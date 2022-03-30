@@ -1,6 +1,8 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
 
 menu.upload_method=Upload method
+menu.serial=Serial
+menu.analog=Analog In/Out
 ##############################################################
 
 stm8sblue.name=STM8S103F3 Breakout Board
@@ -18,6 +20,20 @@ stm8sblue.build.f_cpu=16000000L
 stm8sblue.build.board=STM8S_BLUE
 stm8sblue.build.core=sduino
 stm8sblue.build.variant=standard
+
+stm8sblue.menu.serial.default=Enable Serial
+stm8sblue.menu.serial.default.build.extra_flags=
+stm8sblue.menu.serial.minimal=Disable Serial
+stm8sblue.menu.serial.minimal.build.extra_flags= -DNO_SERIAL
+
+stm8sblue.menu.analog.default=Enabled
+stm8sblue.menu.analog.default.build.extra_flags=
+stm8sblue.menu.analog.no_in=No Analog In
+stm8sblue.menu.analog.no_in.build.extra_flags= -DNO_ANALOG_IN
+stm8sblue.menu.analog.no_out=No Analog Out
+stm8sblue.menu.analog.no_out.build.extra_flags= -DNO_ANALOG_OUT
+stm8sblue.menu.analog.no_in_out=No Analog In and Out
+stm8sblue.menu.analog.no_in_out.build.extra_flags= -DNO_ANALOG_IN -DNO_ANALOG_OUT
 
 # meaningless variables just to keep the makefile happy
 
