@@ -1,3 +1,4 @@
+#if 0
 /*
  * Copyright (c) 2010 by Cristian Maglie <c.maglie@arduino.cc>
  * Copyright (c) 2014 by Paul Stoffregen <paul@pjrc.com> (Transaction API)
@@ -317,3 +318,5 @@ void SPI_notUsingInterrupt(uint8_t interruptNumber)
   SREG = sreg;
 }
 */
+#endif
+

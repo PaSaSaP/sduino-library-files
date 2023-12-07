@@ -140,7 +140,7 @@
 // INTERRUPT_HANDLER(CAN_TX_IRQHandler, 9);                 /* CAN TX/ER/SC */
 #endif /* (STM8S208) || (STM8AF52Ax) */
 
-// INTERRUPT_HANDLER(SPI_IRQHandler, 10);                   /* SPI */
+INTERRUPT_HANDLER(SPI_IRQHandler, 10);                   /* SPI */
 // sds uncommented TIM1_UPD_OVF_TRG_BRK_IRQHandler
 INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11);  /* TIM1 UPD/OVF/TRG/BRK */
 INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12);          /* TIM1 CAP/COM */
