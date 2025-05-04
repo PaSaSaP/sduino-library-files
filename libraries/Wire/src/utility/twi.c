@@ -64,7 +64,7 @@ static volatile uint8_t twi_rxBufferIndex;
 static volatile uint8_t twi_error;
 
 // for now - need this for easy reinit & modify frequency
-static uint8_t twi_ownAddress = 8;
+static uint8_t twi_ownAddress = 0x12;
 static uint32_t twi_frequency = I2C_MAX_STANDARD_FREQ;
 
 // return codes in twi_writeto 
@@ -154,8 +154,8 @@ void twi_init(void)
 	// set I2C frequency to 100kHz and do a full init
 	twi_setFrequency(I2C_MAX_STANDARD_FREQ);
 
-	// set default timeout to 20ms
-	twi_timeOutDelay = 20;
+	// set default timeout to 100ms
+	twi_timeOutDelay = 100;
 
   // TODO : enable I2C interrupts for master & slave
   // for now : only SRX/STX using interrupts
@@ -1407,6 +1407,11 @@ void twi_setTimeout(uint16_t ms)
 	twi_timeOutDelay = ms;
 }
 
+void twi_setTimeout2(uint16_t ms, uint8_t reset_with_timeout)
+{
+	twi_timeOutDelay = ms;
+	twi_do_reset_on_timeout = reset_with_timeout;
+}
 
 /**
  * start the timeout timer

@@ -91,6 +91,7 @@ void Wire_beginSlave(uint8_t address);
 void Wire_end(void);
 void Wire_setClock(uint32_t);
 void Wire_setTimeout(uint16_t);
+void Wire_setTimeout2(uint16_t, bool resetOnTimeout);
 
 void Wire_beginTransmission(uint8_t);
 uint8_t	Wire_endTransmission1(uint8_t sendStop);

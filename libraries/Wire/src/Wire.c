@@ -110,6 +110,11 @@ void Wire_setTimeout(uint16_t ms)
 	twi_setTimeout(ms);
 }
 
+void Wire_setTimeout2(uint16_t ms, bool resetOnTimeout)
+{
+	twi_setTimeout2(ms, resetOnTimeout);
+}
+
 uint8_t Wire_requestFrom2(uint8_t address, uint8_t quantity)
 {
   return Wire_requestFrom3(address, quantity, (uint8_t)true);
